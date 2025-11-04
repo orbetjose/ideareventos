@@ -1,0 +1,253 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/effect-fade";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "aos/dist/aos.css";
+
+@font-face {
+  font-family: "Verdana-Regular";
+  src: url("assets/fonts/Verdana.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Verdana-Bold";
+  src: url("assets/fonts/Verdana_Bold.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eras-Bold";
+  src: url("assets/fonts/ITC-Eras-Std-Bold.otf") format("opentype");
+  font-display: swap;
+}
+
+@theme {
+  --font-verdana-regular: "Verdana-Regular", sans-serif;
+  --font-verdana-bold: "Verdana-Bold", sans-serif;
+  --font-eras-bold: "Eras-Bold", sans-serif;
+
+  --max-width-8xl: 1400px;
+  --text-lg--line-height: calc(var(--spacing) * 5);
+  --color-gunmetal: #292935;
+  --color-granite: #666666;
+  --color-silver: #cfcfcf;
+  --color-gunmetal: #292935;
+  --color-yellowgreen: #83bd3f;
+}
+
+/*Menu custom*/
+
+body {
+  font-size: 16px;
+}
+
+.translate-middle {
+  transform: translate(-50%, -50%);
+}
+
+.navbar {
+  width: 100%;
+  padding: 0;
+  top: 0;
+  left: 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
+
+.navbar .menu-items {
+  display: flex;
+}
+
+.navbar .nav-container li {
+  list-style: none;
+}
+
+.nav-container {
+  display: block;
+  position: relative;
+  height: 60px;
+}
+
+.nav-container .checkbox {
+  position: absolute;
+  display: block;
+  height: 32px;
+  width: 32px;
+  top: 4px;
+  left: 26px;
+  z-index: 99;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.nav-container .hamburger-lines {
+  display: block;
+  height: 30px;
+  width: 40px;
+  position: absolute;
+  top: 25px;
+  right: 26px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.nav-container .hamburger-lines .line {
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.open .hamburger-lines .line {
+  background: #000000;
+}
+
+.nav-container .hamburger-lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.navbar .menu-items {
+  padding-top: 120px;
+  background-color: #ffffff;
+  height: 100vh;
+  width: 100%;
+  transform: translate(-150%);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease-in-out;
+  text-align: center;
+  position: relative;
+  z-index: 30;
+}
+
+.navbar .menu-items ul li {
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.nav-container.open .menu-items {
+  transform: translateX(0);
+}
+.nav-container.open .hamburger-lines {
+  justify-content: space-between;
+}
+
+.nav-container.open .hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+.nav-container.open .hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+.nav-container.open .hamburger-lines .line3 {
+  transform: rotate(-45deg);
+}
+
+.fancy-menu li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 0;
+  transition: all 0.5s ease-in-out;
+  background-color: #ffffff;
+}
+
+.fancy-menu li a:hover::before {
+  width: 100%;
+}
+
+.fancy-menu li a:hover {
+  color: #ffffff;
+}
+
+#desktop-menu .fancy-menu li a.activeMenu {
+  color: #ffffff;
+}
+
+.fancy-menu li a.activeMenu::before {
+  width: 100%;
+}
+
+/*Menu custom*/
+
+body {
+  font-size: 14px;
+}
+
+.flotante-whatsapp {
+  position: fixed;
+  bottom: 10rem;
+  right: 4rem;
+  z-index: 10;
+  width: 60px;
+}
+
+.content-post h3 {
+  font-size: 1.3rem;
+  font-family: "Verdana-Bold";
+}
+
+.content-post h2 {
+  font-size: 1.5rem;
+  font-family: "Verdana-Bold";
+}
+
+.content-post strong {
+  font-family: "Verdana-Bold";
+}
+
+.content-post ul {
+  list-style: disc;
+  padding-left: 40px;
+}
+
+.translate-middle {
+  transform: translate(-50%, -50%);
+}
+
+.swiper-button-next-blog,
+.swiper-button-next-exitos {
+  right: -10%;
+}
+
+.swiper-button-prev-blog,
+.swiper-button-prev-exitos {
+  left: -10%;
+}
+
+@media (min-width: 1024px) {
+  .slider-exitos .swiper-slide {
+    scale: 0.85;
+  }
+
+  .slider-exitos .swiper-slide-prev,
+  .slider-exitos .swiper-slide-next {
+    scale: 1;
+  }
+}
