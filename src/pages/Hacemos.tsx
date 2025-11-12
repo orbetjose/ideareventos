@@ -1,5 +1,7 @@
 import HeroBanner from "../components/HeroBanner";
 import { useEffect } from "react";
+import { useMeta } from "../helpers/useMeta";
+
 import AOS from "aos";
 
 export default function Hacemos() {
@@ -7,7 +9,20 @@ export default function Hacemos() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-
+  useMeta({
+        title: "Idear Eventos - Hacemos",
+        description: "Organización de eventos corporativos",
+        keywords: "eventos, corporativos",
+        canonical: "https://ideareventos.mx/hacemos",
+        og: {
+          title: "Idear Eventos - Hacemos",
+          description: "Organizamos tus eventos con profesionalismo y creatividad.",
+          type: "website",
+          url: "https://ideareventos.mx/hacemos",
+          image: "https://ideareventos.mx/og-image.jpg",
+          site_name: "IDEAR EVENTOS",
+        },
+      });
   const data = [
     {
       image: "wp-content/uploads/2025/11/congreso.png",
@@ -59,11 +74,11 @@ export default function Hacemos() {
       <HeroBanner
         title="Hacemos"
         text="Eventos: Planeación, Organización y Producción."
-        imagen={`${domain}wp-content/uploads/2025/11/banner-hacemos.webp`}
+        imagen={`${domain}wp-content/uploads/2025/11/banner-hacemos.png`}
       />
       <section className="pb-12">
         <div className="md:max-w-6xl 2xl:max-w-7xl mx-auto px-4 md:px-0">
-          <div className="md:flex flex-wrap place-content-center md:gap-8">
+          <div className="grid grid-cols-2 gap-4 md:flex flex-wrap place-content-center md:gap-8">
             {data.map((item, index) => (
               <div
                 key={index}

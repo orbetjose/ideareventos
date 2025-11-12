@@ -1,9 +1,11 @@
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     checkbox: false,
     message: "",
   });
@@ -39,6 +41,7 @@ export default function ContactForm() {
       setFormData({
         name: "",
         email: "",
+        phone: "",
         checkbox: false,
         message: "",
       });
@@ -47,83 +50,112 @@ export default function ContactForm() {
     } finally {
       setLoading(false);
     }
+
+    try {
+      const res = await emailjs.send(
+        "service_9jbyuyo",
+        "template_6nwth2d",
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+        "b6OBi1S8TM8PMPe4O"
+      );
+      if (res.status !== 200) throw new Error("Error en el envio");
+    } catch (error) {
+      console.log("Failed...", error);
+    }
   };
 
   return (
-    <div className="md:max-w-4xl mx-auto py-14 px-8 md:px-0">
-      <div className="flex flex-col-reverse md:flex-row">
-        <div className="flex-1">
+    <div className="md:max-w-5xl mx-auto py-14 px-8 md:px-0">
+      <div className="flex justify-center items-center flex-col-reverse md:flex-row ">
+        <div className=" bg-white rounded-full py-6 relative w-full pr-40">
+          <img
+            src={`${domain}wp-content/uploads/2025/11/imagen-contacto.webp`}
+            alt=""
+            className="h-100 absolute -left-10 top-1/2 -translate-y-1/2"
+          />
           <form
             onSubmit={handleSubmit}
-            className="space-y-4 text-sm  font-verdana-regular
-      ">
-            <label>Nombre</label>
+            className="space-y-3 text-sm  font-verdana-regular w-1/2 ml-auto">
+            <h3 className="text-gunmetal font-verdana-bold text-2xl">CONTÁCTANOS</h3>
             <input
               type="text"
               name="name"
+              placeholder="Nombre"
               onChange={handleChange}
               value={formData.name}
-              className="w-full px-2 pt-2 pb-4 border border-charged-blue rounded bg-black-50"
+              className="w-full px-5 py-2 bg-platinum rounded-full "
               required
             />
             <div>
-              <label>Correo</label>
               <input
                 type="email"
                 name="email"
+                placeholder="Correo"
                 onChange={handleChange}
                 value={formData.email}
-                className="w-full px-2 pt-2 pb-4 border border-charged-blue rounded bg-black-50"
+                className="w-full px-5 py-2 bg-platinum rounded-full "
                 required
               />
             </div>
-            <label htmlFor="">Mensaje</label>
+            <div>
+              <input
+                type="text"
+                name="phone"
+                placeholder="Teléfono"
+                onChange={handleChange}
+                value={formData.phone}
+                className="w-full px-5 py-2 bg-platinum rounded-full "
+                required
+              />
+            </div>
             <textarea
               name="message"
+              placeholder="Mensaje"
               onChange={handleChange}
               value={formData.message}
-              className="w-full px-2 pt-2 pb-4 h-[154px] border border-charged-blue rounded bg-black-50"
+              className="w-full px-5 py-2 bg-platinum rounded-full "
               required
             />
-            <div className="flex gap-4">
+            <div className="flex items-start gap-2">
               <input
                 type="checkbox"
                 required
               />
-              <p>
+              <p className="text-xs">
                 Si, estoy de acuerdo con las{" "}
                 <a
-                  href="#"
+                  href={`${domain}wp-content/uploads/2025/11/Politica-Privacidad-y-Datos-personales-Idear-Eventos.pdf`}
+                  target="_blank"
                   className="underline">
-                  políticas de privacidad
-                </a>{" "}
-                y los{" "}
-                <a
-                  href="#"
-                  className="underline">
-                  términos y condiciones
-                </a>{" "}
+                  políticas de privacidad y los términos y condiciones
+                </a>
               </p>
             </div>
-
-            <button
-              type="submit"
-              className="font-verdana-regular px-4 py-2 rounded block w-full text-white bg-yellowgreen text-center text-base cursor-pointer"
-              disabled={loading}>
-              {loading ? "Enviando..." : "Enviar"}
-            </button>
+            <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
+              <button
+                type="submit"
+                className="font-verdana-regular text-gunmetal cursor-pointer"
+                disabled={loading}>
+                {loading ? "Enviando..." : "Enviar"}
+              </button>
+              <img
+                src={`${domain}wp-content/uploads/2025/11/ico-enviar.png`}
+                alt=""
+                className="h-3"
+              />
+            </div>
           </form>
           {success ? (
-            <p className="text-green-500 text-center mt-4 font-poppins-bold text-lg ">¡Mensaje enviado con éxito!</p>
+            <p className="text-green-500 text-center mt-4 font-poppins-bold text-lg absolute right-2/5 bottom-1 translate-x-1/2">
+              ¡Mensaje enviado con éxito!
+            </p>
           ) : null}
           {error ? <p className="text-red-500 font-poppins-bold text-lg">{error}</p> : null}
-        </div>
-        <div className="flex-1">
-          <div className="font-verdana-regular text-lg space-y-1 md:text-2xl md:ps-20 md:space-y-3 md:pt-10 pb-4 text-center md:text-left">
-            <h3>Mayores informes:</h3>
-            <p>Cel. +52 99 92 65 98 66</p>
-            <p>cmontealegre@ideareventos.mx</p>
-          </div>
         </div>
       </div>
     </div>

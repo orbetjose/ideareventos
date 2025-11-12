@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { useEffect } from "react";
-import { Helmet } from 'react-helmet';
+import { useMeta } from "../helpers/useMeta";
 import AOS from "aos";
-
 
 export default function Home() {
   const domain = import.meta.env.VITE_WP_DOMAIN;
@@ -11,20 +10,22 @@ export default function Home() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-
+  useMeta({
+    title: "Idear Eventos - Home",
+    description: "Organización de eventos corporativos",
+    keywords: "eventos, corporativos",
+    canonical: "https://ideareventos.mx",
+    og: {
+      title: "Idear Eventos - Home",
+      description: "Organizamos tus eventos con profesionalismo y creatividad.",
+      type: "website",
+      url: "https://ideareventos.mx",
+      image: "https://ideareventos.mx/og-image.jpg",
+      site_name: "IDEAR EVENTOS",
+    },
+  });
   return (
     <>
-      <Helmet>
-        <title>IDEAR EVENTOS - Organización de eventos corporativos</title>
-        <meta
-          name="description"
-          content="Organización de eventos corporativos"
-        />
-        <meta
-          name="keywords"
-          content="Organización de eventos corporativos"
-        />
-      </Helmet>
       <section className="pb-14">
         <div className="relative">
           <img
@@ -140,6 +141,11 @@ export default function Home() {
                   <p>Cada proyecto es pensado desde la empatía, innovación y excelencia operativa.</p>
                 </div>
               </div>
+              <a
+                href="/idear"
+                className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit mt-8">
+                Idear inspira
+              </a>
             </div>
           </div>
         </div>
@@ -240,6 +246,11 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <a
+            href="/galeria"
+            className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit mx-auto mt-8">
+            Ver galeria
+          </a>
         </div>
       </section>
       <section className="py-10 md:py-14">
@@ -332,13 +343,12 @@ export default function Home() {
                     src={`${domain}wp-content/uploads/2025/10/buble.png`}
                     alt=""
                   />
-                  <div className="absolute top-1/2 left-1/2 translate-middle w-full">
+                  <div className="absolute top-1/2 left-1/2 translate-middle w-full pb-6">
                     <p className="font-verdana-regular px-10 leading-4">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                      Excelente apoyo en nuestra Reunión Anual de Ventas. Organización impecable, atención a detalles y
+                      compromiso que garantizó un evento exitoso.
                     </p>
-                    <span className="font-verdana-bold ">Nombre</span>
+                    <span className="font-verdana-bold ">Michelin México</span>
                   </div>
                 </div>
               </SwiperSlide>
@@ -358,11 +368,12 @@ export default function Home() {
                     src={`${domain}wp-content/uploads/2025/10/buble.png`}
                     alt=""
                   />
-                  <div className="absolute top-1/2 left-1/2 translate-middle w-full">
+                  <div className="absolute top-1/2 left-1/2 translate-middle w-full pb-6">
                     <p className="font-verdana-regular px-10 leading-4">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,{" "}
+                      Profesionalismo, responsabilidad y pasión. Con su apoyo, todos nuestros eventos han sido exitosos.
+                      Gran trabajo del equipo IDEAR.
                     </p>
-                    <span className="font-verdana-bold ">Nombre</span>
+                    <span className="font-verdana-bold pt-2 block ">DLE Academy / ExxonMobil</span>
                   </div>
                 </div>
               </SwiperSlide>
@@ -382,59 +393,12 @@ export default function Home() {
                     src={`${domain}wp-content/uploads/2025/10/buble.png`}
                     alt=""
                   />
-                  <div className="absolute top-1/2 left-1/2 translate-middle w-full">
+                  <div className="absolute top-1/2 left-1/2 translate-middle w-full pb-6">
                     <p className="font-verdana-regular px-10 leading-4">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,{" "}
+                      Excelente atención y profesionalismo. Han sido clave para el éxito de nuestros DLE Academy. Equipo
+                      confiable y talentoso.
                     </p>
-                    <span className="font-verdana-bold ">Nombre</span>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/10/quote-1.png`}
-                    alt=""
-                    className="absolute h-7 top-4 left-4"
-                  />
-                  <img
-                    src={`${domain}wp-content/uploads/2025/10/quote-2.png`}
-                    alt=""
-                    className="absolute h-7 bottom-11 right-5"
-                  />
-                  <img
-                    src={`${domain}wp-content/uploads/2025/10/buble.png`}
-                    alt=""
-                  />
-                  <div className="absolute top-1/2 left-1/2 translate-middle w-full">
-                    <p className="font-verdana-regular px-10 leading-4">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,{" "}
-                    </p>
-                    <span className="font-verdana-bold ">Nombre</span>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/10/quote-1.png`}
-                    alt=""
-                    className="absolute h-7 top-4 left-4"
-                  />
-                  <img
-                    src={`${domain}wp-content/uploads/2025/10/quote-2.png`}
-                    alt=""
-                    className="absolute h-7 bottom-11 right-5"
-                  />
-                  <img
-                    src={`${domain}wp-content/uploads/2025/10/buble.png`}
-                    alt=""
-                  />
-                  <div className="absolute top-1/2 left-1/2 translate-middle w-full">
-                    <p className="font-verdana-regular px-10 leading-4">
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,{" "}
-                    </p>
-                    <span className="font-verdana-bold ">Nombre</span>
+                    <span className="font-verdana-bold pt-2 block ">DLE Academy / ExxonMobil</span>
                   </div>
                 </div>
               </SwiperSlide>
@@ -502,7 +466,10 @@ export default function Home() {
                   />
                   <div className="p-6 md:min-h-55 flex flex-col">
                     <span className="font-verdana-bold text-lg">LA DLE Academy</span>
-                    <p className="py-3">Cómo transformamos una capacitación de ingeniería en una experiencia de aprendizaje y entretenimiento.</p>
+                    <p className="py-3">
+                      Cómo transformamos una capacitación de ingeniería en una experiencia de aprendizaje y
+                      entretenimiento.
+                    </p>
                     <a
                       href="/post/la-dle-academy"
                       className="bg-white text-gunmetal px-4 py-1 rounded-xl mt-auto block w-fit">
@@ -518,7 +485,9 @@ export default function Home() {
                     alt=""
                   />
                   <div className="p-6 md:min-h-55 flex flex-col">
-                    <span className="font-verdana-bold text-lg">Cómo Elegir la Agencia de Eventos Corporativos Perfecta</span>
+                    <span className="font-verdana-bold text-lg">
+                      Cómo Elegir la Agencia de Eventos Corporativos Perfecta
+                    </span>
                     <p className="py-3">3 Pilares que IDEAR Domina (Sostenibilidad, Innovación y Logística)</p>
                     <a
                       href="/post/como-elegir-la-agencia-de-eventos-corporativos-perfecta"
@@ -530,7 +499,7 @@ export default function Home() {
               </SwiperSlide>
             </Swiper>
           </div>
-          <div className="pt-8 flex items-center justify-center gap-4">
+          <div className="md:pt-8 flex items-center justify-center gap-4">
             <a
               href=""
               className="bg-yellowgreen px-5 py-1 rounded-3xl font-verdana-regular text-gunmetal text-lg">

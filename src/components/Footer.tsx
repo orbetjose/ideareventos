@@ -52,6 +52,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        <div className="text-center pt-4">
+          <a href={`${domain}wp-content/uploads/2025/11/Politica-de-Cookies.pdf`} target="_blank" className="font-verdana-regular underline">Política de cookies</a>
+        </div>
       </section>
     </footer>
   );
