@@ -75,7 +75,7 @@ export default function Multimedia() {
               <SwiperSlide className="slide-foto">
                 <div className="relative text-black text-center">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-1.webp`}
                     alt=""
                     className=" "
                   />
@@ -84,7 +84,7 @@ export default function Multimedia() {
               <SwiperSlide className="slide-foto">
                 <div className="relative text-black text-center">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-2.webp`}
                     alt=""
                     className=" "
                   />
@@ -93,70 +93,7 @@ export default function Multimedia() {
               <SwiperSlide className="slide-foto">
                 <div className="relative text-black text-center">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-3.webp`}
                     alt=""
                     className=" "
                   />
@@ -165,7 +102,43 @@ export default function Multimedia() {
               <SwiperSlide className="slide-foto">
                 <div className="relative text-black text-center">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-4.webp`}
+                    alt=""
+                    className=" "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-5.webp`}
+                    alt=""
+                    className=" "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-6.webp`}
+                    alt=""
+                    className=" "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-7.webp`}
+                    alt=""
+                    className=" "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-8.webp`}
                     alt=""
                     className=""
                   />
@@ -174,7 +147,79 @@ export default function Multimedia() {
               <SwiperSlide className="slide-foto">
                 <div className="relative text-black text-center">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/fotos-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-9.webp`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-10.webp`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-11.webp`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-12.webp`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-13.webp`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-14.webp`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-15.webp`}
+                    alt=""
+                    className=" "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-16.webp`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="slide-foto">
+                <div className="relative text-black text-center">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-17.webp`}
                     alt=""
                     className=""
                   />
@@ -222,34 +267,160 @@ export default function Multimedia() {
                 },
                 768: {
                   slidesPerView: 3,
-                  spaceBetween: -40,
+                  spaceBetween: 0,
                 },
               }}
               className="">
               <SwiperSlide className="">
-                <div className="relative text-black text-center">
+                <div className="relative text-black text-center w-full">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/video-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-18.webp`}
                     alt=""
-                    className=""
+                    className="rounded-3xl h-70 w-full object-cover "
                   />
                 </div>
               </SwiperSlide>
               <SwiperSlide className="">
-                <div className="relative text-black text-center">
+                <div className="relative text-black text-center w-full">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/video-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-19.webp`}
                     alt=""
-                    className=""
+                    className="rounded-3xl h-70 w-full object-cover "
                   />
                 </div>
               </SwiperSlide>
               <SwiperSlide className="">
-                <div className="relative text-black text-center">
+                <div className="relative text-black text-center w-full">
                   <img
-                    src={`${domain}wp-content/uploads/2025/11/video-thumbnail.png`}
+                    src={`${domain}wp-content/uploads/2025/11/galeria-20.webp`}
                     alt=""
-                    className="a"
+                    className="rounded-3xl h-70 w-full object-cover a"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-21.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-22.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-23.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover a"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-24.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-25.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-26.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover a"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-27.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-28.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-29.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover a"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-30.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-31.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-32.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover a"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-33.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover "
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="">
+                <div className="relative text-black text-center w-full">
+                  <img
+                    src={`${domain}wp-content/uploads/2025/11/galeria-34.webp`}
+                    alt=""
+                    className="rounded-3xl h-70 w-full object-cover a"
                   />
                 </div>
               </SwiperSlide>
