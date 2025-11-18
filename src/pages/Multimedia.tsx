@@ -2,9 +2,103 @@ import HeroBanner from "../components/HeroBanner";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, EffectCoverflow } from "swiper/modules";
 import { useMeta } from "../helpers/useMeta";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Lightbox, { type MediaItem } from "../components/Lightbox";
+
+// Pequeño componente para mostrar un frame del video en el segundo ~1 como thumbnail
+function VideoThumb({
+  src,
+  className,
+  onClick,
+  seekSeconds = 1,
+}: {
+  src: string;
+  className?: string;
+  onClick?: () => void;
+  seekSeconds?: number;
+}) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let requestedTime = seekSeconds;
+
+    const onLoadedMetadata = () => {
+      // Si el video es muy corto, busca la mitad de su duración
+      if (video.duration && requestedTime > video.duration) {
+        requestedTime = Math.max(0, Math.min(1, video.duration / 2));
+      }
+      try {
+        video.currentTime = requestedTime;
+      } catch {
+        // Algunos navegadores requieren esperar a que sea "seekable"
+      }
+    };
+
+    const onSeeked = () => {
+      // Asegurar que quede pausado en el frame
+      try {
+        video.pause();
+      } catch {}
+    };
+
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    video.addEventListener("seeked", onSeeked);
+
+    // En casos donde loadedmetadata no dispare correctamente,
+    // intenta una segunda búsqueda tras un pequeño delay.
+    const fallback = setTimeout(() => {
+      if (!video.duration) return;
+      try {
+        video.currentTime = Math.min(requestedTime, Math.max(0.1, video.duration / 3));
+      } catch {}
+    }, 1200);
+
+    return () => {
+      clearTimeout(fallback);
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      video.removeEventListener("seeked", onSeeked);
+    };
+  }, [src, seekSeconds]);
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative mx-auto cursor-pointer block group ${className || ""}`}>
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        playsInline
+        preload="metadata"
+        // Importante: sin controls para que se vea como imagen
+        controls={false}
+        className="rounded-3xl h-120 md:h-100 w-full object-cover bg-black"
+      />
+      {/* Overlay play */}
+      <span className="pointer-events-none absolute inset-0 rounded-3xl bg-black/0 group-hover:bg-black/20 transition" />
+      <span className="pointer-events-none absolute inset-0 grid place-items-center">
+        <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/90 group-hover:bg-white text-black shadow-lg transition">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+      </span>
+    </button>
+  );
+}
 
 export default function Multimedia() {
   const domain = import.meta.env.VITE_WP_DOMAIN;
+
   useMeta({
     title: "Idear Eventos - Galeria",
     description: "Organización de eventos corporativos",
@@ -19,36 +113,78 @@ export default function Multimedia() {
       site_name: "IDEAR EVENTOS",
     },
   });
+
+  // Fotos (1..17)
+  const photoItems: MediaItem[] = useMemo(
+    () =>
+      Array.from({ length: 17 }, (_, i) => {
+        const n = i + 1;
+        return {
+          type: "image" as const,
+          src: `${domain}wp-content/uploads/2025/11/galeria-${n}.webp`,
+          alt: `Foto ${n}`,
+        };
+      }),
+    [domain]
+  );
+
+  // El formato de array es como solicitaste.
+  const reelUrls: string[] = [
+    `${domain}wp-content/uploads/2025/11/video-1.mp4`,
+    `${domain}wp-content/uploads/2025/11/video-2.mp4`,
+    `${domain}wp-content/uploads/2025/11/video-4.mp4`,
+    `${domain}wp-content/uploads/2025/11/video-5.mp4`,
+    `${domain}wp-content/uploads/2025/11/video-6.mp4`,
+    `${domain}wp-content/uploads/2025/11/video-7.mp4`,
+    `${domain}wp-content/uploads/2025/11/video-8.mp4`,
+  ];
+
+  // Lightbox: items de video desde reelUrls
+  const videoItems: MediaItem[] = useMemo(
+    () =>
+      reelUrls.map((url, idx) => ({
+        type: "video" as const,
+        src: url,
+        alt: `Video ${idx + 1}`,
+      })),
+    [reelUrls]
+  );
+
+  // Lightbox state para fotos
+  const [openPhotos, setOpenPhotos] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  // Lightbox state para videos
+  const [openVideos, setOpenVideos] = useState(false);
+  const [videoIndex, setVideoIndex] = useState(0);
+
   return (
     <>
       <HeroBanner
         title="Galería"
         imagen={`${domain}wp-content/uploads/2025/11/banner-multimedia.png`}
       />
+
+      {/* ------------------ FOTOS ------------------ */}
       <section>
         <div className="md:max-w-8xl 2xl:max-w-7xl mx-auto px-4 md:px-0">
           <h3 className="font-verdana-bold text-gunmetal text-3xl text-center">Fotos</h3>
-          <a
-            href="#"
-            className="bg-yellowgreen px-3 py-1 rounded-2xl font-verdana-bold text-white block mx-auto w-fit">
-            Ver todas
-          </a>
+
           <div className="relative slider-fotos my-14">
             <button className="swiper-button-prev swiper-button-prev-fotos">
               <img
                 src={`${domain}wp-content/uploads/2025/10/chevron-left.png`}
                 alt=""
-                className=""
               />
             </button>
             <button className="swiper-button-next swiper-button-next-fotos">
               <img
                 src={`${domain}wp-content/uploads/2025/10/chevron-right.png`}
                 alt=""
-                className=""
               />
             </button>
             <div className="swiper-pagination-fotos"></div>
+
             <Swiper
               watchOverflow={false}
               loop={true}
@@ -72,186 +208,53 @@ export default function Multimedia() {
                 modifier: 2.5,
               }}
               className="">
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-1.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-2.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-3.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-4.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-5.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-6.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-7.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-8.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-9.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-10.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-11.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-12.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-13.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-14.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-15.webp`}
-                    alt=""
-                    className=" "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-16.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="slide-foto">
-                <div className="relative text-black text-center">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-17.webp`}
-                    alt=""
-                    className=""
-                  />
-                </div>
-              </SwiperSlide>
+              {photoItems.map((item, i) => (
+                <SwiperSlide
+                  className="slide-foto"
+                  key={`foto-${i}`}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPhotoIndex(i);
+                      setOpenPhotos(true);
+                    }}
+                    className="relative text-black text-center block focus:outline-none group cursor-pointer">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="rounded-3xl"
+                      loading="lazy"
+                    />
+                    {/* Zoom icon hover */}
+                    <span className="absolute inset-0 rounded-3xl ring-0 group-hover:ring-4 ring-yellowgreen/60 transition" />
+                  </button>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
       </section>
+
+      {/* ------------------ VIDEOS ------------------ */}
       <section className="md:mt-26">
-        <div className="md:max-w-4xl 2xl:max-w-7xl mx-auto px-4 md:px-0">
+        <div className="md:max-w-6xl 2xl:max-w-7xl mx-auto px-4 md:px-0">
           <h3 className="font-verdana-bold text-gunmetal text-3xl text-center">Videos</h3>
-          <a
-            href="#"
-            className="bg-yellowgreen px-3 py-1 rounded-2xl font-verdana-bold text-white block mx-auto w-fit">
-            Ver todos
-          </a>
-          <div className="relative slider-videos mb-18 mt-10">
+
+          <div className="relative slider-videos mb-24 mt-10">
             <button className="swiper-button-prev swiper-button-prev-videos">
               <img
                 src={`${domain}wp-content/uploads/2025/10/chevron-left.png`}
                 alt=""
-                className=""
               />
             </button>
             <button className="swiper-button-next swiper-button-next-videos">
               <img
                 src={`${domain}wp-content/uploads/2025/10/chevron-right.png`}
                 alt=""
-                className=""
               />
             </button>
+            <div className="swiper-pagination-videos"></div>
+
             <Swiper
               watchOverflow={false}
               loop={false}
@@ -260,174 +263,48 @@ export default function Multimedia() {
                 prevEl: ".swiper-button-prev-videos",
                 nextEl: ".swiper-button-next-videos",
               }}
+              pagination={{
+                dynamicBullets: true,
+                el: ".swiper-pagination-videos",
+              }}
               breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 3,
-                  spaceBetween: 0,
-                },
+                320: { slidesPerView: 1, spaceBetween: 20 },
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                768: { slidesPerView: 3, spaceBetween: 24 },
+                1024: { slidesPerView: 5, spaceBetween: 28 },
               }}
               className="">
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-18.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
+              {reelUrls.map((url, i) => (
+                <SwiperSlide key={`video-${i}`}>
+                  <VideoThumb
+                    src={url}
+                    onClick={() => {
+                      setVideoIndex(i);
+                      setOpenVideos(true);
+                    }}
                   />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-19.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-20.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover a"
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-21.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-22.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-23.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover a"
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-24.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-25.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-26.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover a"
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-27.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-28.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-29.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover a"
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-30.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-31.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-32.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover a"
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-33.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover "
-                  />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative text-black text-center w-full">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/galeria-34.webp`}
-                    alt=""
-                    className="rounded-3xl h-70 w-full object-cover a"
-                  />
-                </div>
-              </SwiperSlide>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
       </section>
+
+      {/* Lightbox para fotos */}
+      <Lightbox
+        items={photoItems}
+        open={openPhotos}
+        startIndex={photoIndex}
+        onClose={() => setOpenPhotos(false)}
+      />
+
+      {/* Lightbox para videos */}
+      <Lightbox
+        items={videoItems}
+        open={openVideos}
+        startIndex={videoIndex}
+        onClose={() => setOpenVideos(false)}
+      />
     </>
   );
 }
