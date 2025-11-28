@@ -39,6 +39,7 @@ export default function Home() {
               <span className="bg-yellowgreen rounded-full px-2 inline-block md:pb-2">Organización</span> de Eventos
               Corporativos
             </h2>
+            <a className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit hover:scale-105 transition-transform mx-auto text-xl mt-6" href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes" target="_blank">Cotiza ahora</a>
           </div>
         </div>
       </section>
@@ -58,11 +59,11 @@ export default function Home() {
               <span className="font-eras-bold">Nuestro propósito es claro: crear lo extraordinario</span>, hecho a tu
               medida.
             </p>
-            <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
+            <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2 hover:bg-gunmetal transition-colors cursor-pointer">
               <a
-                href="#"
-                className="font-verdana-regular text-gunmetal">
-                Contáctanos
+                href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes" target="_blank"
+                className="font-verdana-regular text-gunmetal hover:text-white">
+                Cotiza ahora
               </a>
               <img
                 src={`${domain}wp-content/uploads/2025/10/chevron-right.png`}
@@ -143,7 +144,7 @@ export default function Home() {
               </div>
               <a
                 href="/idear"
-                className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit mt-8">
+                className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit mt-8 hover:scale-105 transition-transform">
                 Idear inspira
               </a>
             </div>
@@ -246,11 +247,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <a
-            href="/galeria"
-            className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit mx-auto mt-8">
-            Ver galeria
-          </a>
+          <div className="flex justify-center mt-8 gap-4">
+            <a
+              href="/galeria"
+              className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit hover:scale-105 transition-transform">
+              Ver galeria
+            </a>
+            <a className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit hover:scale-105 transition-transform" href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes" target="_blank">
+              Cotiza ahora
+            </a>
+          </div>
         </div>
       </section>
       <section className="py-10 md:py-14">
@@ -284,8 +290,8 @@ export default function Home() {
             Hablemos hoy y creemos juntos lo extraordinario, hecho a tu medida.
           </p>
           <a
-            href="#"
-            className="bg-yellowgreen px-5 py-2 rounded-2xl font-verdana-bold text-white">
+            href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes" target="_blank"            
+            className="bg-yellowgreen px-4 py-1 rounded-2xl font-verdana-bold text-white hover:scale-105 transition-transform block w-fit mx-auto">
             Quiero mi propuesta
           </a>
         </div>
@@ -442,10 +448,11 @@ export default function Home() {
               }}
               className="">
               <SwiperSlide>
-                <div className="bg-gunmetal rounded-3xl text-white font-verdana-regular">
+                <div className="bg-gunmetal overflow-hidden rounded-3xl text-white font-verdana-regular">
                   <img
-                    src={`${domain}wp-content/uploads/2025/10/card_1.png`}
+                    src={`${domain}wp-content/uploads/2025/11/Bid-Week-Michelin-scaled.webp`}
                     alt=""
+                    className="h-42 w-full object-cover"
                   />
                   <div className="p-6 md:min-h-55 flex flex-col">
                     <span className="font-verdana-bold text-lg">Michelin Bid Week</span>
@@ -459,10 +466,11 @@ export default function Home() {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="bg-gunmetal rounded-3xl text-white font-verdana-regular">
+                <div className="bg-gunmetal overflow-hidden rounded-3xl text-white font-verdana-regular">
                   <img
-                    src={`${domain}wp-content/uploads/2025/10/card_2.png`}
+                    src={`${domain}wp-content/uploads/2025/11/DLE-Academy-scaled.webp`}
                     alt=""
+                    className="h-42 w-full object-cover"
                   />
                   <div className="p-6 md:min-h-55 flex flex-col">
                     <span className="font-verdana-bold text-lg">LA DLE Academy</span>
@@ -479,10 +487,11 @@ export default function Home() {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="bg-gunmetal rounded-3xl text-white font-verdana-regular">
+                <div className="bg-gunmetal overflow-hidden rounded-3xl text-white font-verdana-regular">
                   <img
                     src={`${domain}wp-content/uploads/2025/10/card_3.png`}
                     alt=""
+                    className="h-42 w-full object-cover"
                   />
                   <div className="p-6 md:min-h-55 flex flex-col">
                     <span className="font-verdana-bold text-lg">
@@ -501,8 +510,8 @@ export default function Home() {
           </div>
           <div className="md:pt-8 flex items-center justify-center gap-4">
             <a
-              href=""
-              className="bg-yellowgreen px-5 py-1 rounded-3xl font-verdana-regular text-gunmetal text-lg">
+              href="/blog"
+              className="bg-yellowgreen px-5 py-1 rounded-3xl font-verdana-regular text-white text-lg">
               Más artículos
             </a>
             <img

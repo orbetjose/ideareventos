@@ -80,7 +80,7 @@ export default function Header() {
                     let relativePath = new URL(item.permalink).pathname;
                     if (relativePath.includes("wp")) {
                       relativePath = relativePath.replace(
-                        "/test3",
+                        "/wp",
                         ""
                       );
                     }

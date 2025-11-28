@@ -29,7 +29,7 @@ export default function Nosotros() {
         title="Somos"
         imagen={`${domain}wp-content/uploads/2025/11/banner-nosotros.webp`}
       />
-      <section className="md:max-w-5xl 2xl:max-w-7xl mx-auto px-4 md:px-0 md:pb-20 pb-6">
+      <section className="md:max-w-5xl 2xl:max-w-7xl mx-auto px-4 md:px-0 pb-6">
         <div className="flex flex-col md:flex-row items-center">
           <div
             className="flex-1 md:block hidden"
@@ -54,7 +54,8 @@ export default function Nosotros() {
             </p>
             <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
               <a
-                href="#"
+                href="/contacto"
+                onClick={() => (window as any).gtag_report_conversion("/contacto")}
                 className="font-verdana-regular text-gunmetal">
                 Contáctanos
               </a>
@@ -68,29 +69,23 @@ export default function Nosotros() {
         </div>
       </section>
       <section className="bg-[#adadad] md:mt-60 ">
-        <div className="md:max-w-5xl 2xl:max-w-7xl mx-auto px-4 md:px-0 ">
+        <div className="md:max-w-5xl 2xl:max-w-7xl mx-auto px-4 md:px-0 py-12">
           <div className="flex justify-evenly overflow-scroll md:overflow-initial pt-4 gap-8 md:gap-0 md:pt-0">
             <img
               src={`${domain}wp-content/uploads/2025/11/img-empresas-3.png`}
               alt=""
-              className="max-h-75 md:max-h-90 md:-mt-45"
+              className="max-h-75 md:max-h-90 md:-mt-52"
             />
             <img
               src={`${domain}wp-content/uploads/2025/11/img-empresas-2.png`}
               alt=""
-              className="max-h-75 md:max-h-90 md:-mt-45"
+              className="max-h-75 md:max-h-90 md:-mt-52"
             />
             <img
               src={`${domain}wp-content/uploads/2025/11/img-empresas-1.png`}
               alt=""
-              className="max-h-75 md:max-h-90 md:-mt-45"
+              className="max-h-75 md:max-h-90 md:-mt-52"
             />
-          </div>
-          <div className="py-12 md:w-3/5 mx-auto">
-            <p className="text-center text-lg font-verdana-regular ">
-              Una empresa certificada por <span className="font-verdana-bold italic ">WEConnect International</span>,
-              red global que conecta negocios de mujeres empresarias con compradores calificados en todo el mundo.
-            </p>
           </div>
         </div>
       </section>

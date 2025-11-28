@@ -1,8 +1,9 @@
 import ContactForm from "../components/ContactForm";
 import { useMeta } from "../helpers/useMeta";
-const domain = import.meta.env.VITE_WP_DOMAIN;
 
 export default function Contact() {
+  const domain = import.meta.env.VITE_WP_DOMAIN;
+
   useMeta({
     title: "Idear Eventos - Contáctanos",
     description: "Organización de eventos corporativos",
@@ -16,7 +17,6 @@ export default function Contact() {
       image: "https://ideareventos.mx/og-image.jpg",
       site_name: "IDEAR EVENTOS",
     },
-    
   });
   return (
     <>

@@ -5,26 +5,27 @@ import { useEffect } from "react";
 import { useMeta } from "../helpers/useMeta";
 
 import AOS from "aos";
+import { Link } from "react-router-dom";
 
 export default function Blog() {
   const domain = import.meta.env.VITE_WP_DOMAIN;
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-    useMeta({
-          title: "Idear Eventos - Blog",
-          description: "Organización de eventos corporativos",
-          keywords: "eventos, corporativos",
-          canonical: "https://ideareventos.mx/blog",
-          og: {
-            title: "Idear Eventos - Blog",
-            description: "Organizamos tus eventos con profesionalismo y creatividad.",
-            type: "website",
-            url: "https://ideareventos.mx/blog",
-            image: "https://ideareventos.mx/og-image.jpg",
-            site_name: "IDEAR EVENTOS",
-          },
-        });
+  useMeta({
+    title: "Idear Eventos - Blog",
+    description: "Organización de eventos corporativos",
+    keywords: "eventos, corporativos",
+    canonical: "https://ideareventos.mx/blog",
+    og: {
+      title: "Idear Eventos - Blog",
+      description: "Organizamos tus eventos con profesionalismo y creatividad.",
+      type: "website",
+      url: "https://ideareventos.mx/blog",
+      image: "https://ideareventos.mx/og-image.jpg",
+      site_name: "IDEAR EVENTOS",
+    },
+  });
   return (
     <>
       <HeroBlog
@@ -73,40 +74,44 @@ export default function Blog() {
               }}
               className="">
               <SwiperSlide className="">
-                <div className="relative text-black">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/tendencia-1.png`}
-                    alt=""
-                    className=""
-                  />
-                  <span className="absolute font-verdana-bold text-white px-6 bottom-6 w-full">
-                    El arte de crear experiencias que inspiran
-                  </span>
-                </div>
+                <Link to="/post/michelin-bid-week">
+                  <div className="relative text-black">
+                    <img
+                      src={`${domain}wp-content/uploads/2025/11/Bid-Week-Michelin-scaled.webp`}
+                      alt="Michelin Bid Week"
+                      className="h-60 w-full object-cover rounded-4xl"
+                    />
+                    <span className="absolute font-verdana-bold text-white px-6 bottom-6 w-full">
+                      Michelin Bid Week
+                    </span>
+                  </div>
+                </Link>
               </SwiperSlide>
               <SwiperSlide className="">
-                <div className="relative text-black">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/tendencia-2.png`}
-                    alt=""
-                    className=""
-                  />
-                  <span className="absolute font-verdana-bold text-white px-6 bottom-6 w-full">
-                    Más que un evento, una experiencia que deja huella
-                  </span>
-                </div>
+                <Link to="/post/la-dle-academy">
+                  <div className="relative text-black">
+                    <img
+                      src={`${domain}wp-content/uploads/2025/11/DLE-Academy-scaled.webp`}
+                      alt="LA DLE Academy"
+                      className="h-60 w-full object-cover rounded-4xl"
+                    />
+                    <span className="absolute font-verdana-bold text-white px-6 bottom-6 w-full">LA DLE Academy</span>
+                  </div>
+                </Link>
               </SwiperSlide>
               <SwiperSlide className="">
-                <div className="relative text-black">
-                  <img
-                    src={`${domain}wp-content/uploads/2025/11/tendencia-3.png`}
-                    alt=""
-                    className=""
-                  />
-                  <span className="absolute font-verdana-bold text-white px-6 bottom-6 w-full">
-                    Cómo lograr que tu evento refleje tu marca
-                  </span>
-                </div>
+                <Link to="/post/5-experiencias-de-team-building-y-kick-offs-corporativos-inolvidables">
+                  <div className="relative text-black">
+                    <img
+                      src={`${domain}wp-content/uploads/2025/11/tendencia-3.png`}
+                      alt="5 experiencias de team Building y kick-offs corporativos inolvidables"
+                      className="h-60 w-full object-cover rounded-4xl"
+                    />
+                    <span className="absolute font-verdana-bold text-white px-6 bottom-6 w-full">
+                      5 experiencias de team Building y kick-offs corporativos inolvidables
+                    </span>
+                  </div>
+                </Link>
               </SwiperSlide>
             </Swiper>
           </div>
@@ -155,16 +160,16 @@ export default function Blog() {
                   <div className="flex flex-col-reverse md:flex-row gap-8 items-center">
                     <div className="flex-2 md:pr-16">
                       <h3 className="font-verdana-bold text-gunmetal text-xl pb-2">
-                        Tendencias que están marcando los eventos{" "}
-                        <span className="text-yellowgreen">corporativos 2025</span>
+                        Cómo elegir la agencia de{" "}
+                        <span className="text-yellowgreen">eventos corporativos perfecta</span>
                       </h3>
                       <p className="font-verdana-regular text-gunmetal">
-                        Ya no se trata solo de reunir personas, sino de crear experiencias significativas que conecten,
-                        inspiren y dejen huella.
+                        Organizar un evento corporativo ya no es solo una tarea logística; es una inversión estratégica
+                        en la imagen, la cultura y los objetivos de tu empresa.
                       </p>
                       <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
                         <a
-                          href="#"
+                          href="/post/como-elegir-la-agencia-de-eventos-corporativos-perfecta"
                           className="font-verdana-regular text-gunmetal">
                           Leer más
                         </a>
@@ -190,17 +195,16 @@ export default function Blog() {
                   <div className="flex flex-col-reverse md:flex-row gap-8 items-center">
                     <div className="flex-2 pr-16">
                       <h3 className="font-verdana-bold text-gunmetal text-xl pb-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit{" "}
-                        <span className="text-yellowgreen">Lorem ipsum</span>
+                        Realidad aumentada e IA: La tecnología inmersiva que transforma tus{" "}
+                        <span className="text-yellowgreen">eventos corporativos</span>
                       </h3>
                       <p className="font-verdana-regular text-gunmetal">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nunc et risus dapibus
-                        semper a sed eros. Sed sed viverra lorem. Sed posuere erat ac mi dapibus, eget commodo metus
-                        faucibus.
+                        El desafío de los eventos corporativos actuales es que el público ya no se conforma con ser
+                        espectador pasivo.
                       </p>
                       <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
                         <a
-                          href="#"
+                          href="/post/realidad-aumentada-y-ia-la-tecnologia-inmersiva-que-transforma-tus-eventos-corporativos"
                           className="font-verdana-regular text-gunmetal">
                           Leer más
                         </a>
@@ -216,42 +220,6 @@ export default function Blog() {
                         src={`${domain}wp-content/uploads/2025/11/noticias-1.png`}
                         alt=""
                         className="h-60"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative">
-                  <div className="flex flex-col-reverse md:flex-row gap-8 items-center">
-                    <div className="flex-2 md:pr-16">
-                      <h3 className="font-verdana-bold text-gunmetal text-xl pb-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit{" "}
-                        <span className="text-yellowgreen">Lorem ipsum</span>
-                      </h3>
-                      <p className="font-verdana-regular text-gunmetal">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nunc et risus dapibus
-                        semper a sed eros. Sed sed viverra lorem. Sed posuere erat ac mi dapibus, eget commodo metus
-                        faucibus.
-                      </p>
-                      <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
-                        <a
-                          href="#"
-                          className="font-verdana-regular text-gunmetal">
-                          Leer más
-                        </a>
-                        <img
-                          src={`${domain}wp-content/uploads/2025/10/chevron-right.png`}
-                          alt=""
-                          className="h-3"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <img
-                        src={`${domain}wp-content/uploads/2025/11/noticias-1.png`}
-                        alt=""
-                        className="h-60 "
                       />
                     </div>
                   </div>
@@ -302,121 +270,7 @@ export default function Blog() {
                       </p>
                       <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
                         <a
-                          href="#"
-                          className="font-verdana-regular text-gunmetal">
-                          Leer más
-                        </a>
-                        <img
-                          src={`${domain}wp-content/uploads/2025/10/chevron-right.png`}
-                          alt=""
-                          className="h-3"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative">
-                  <div className="flex items-center flex-col md:flex-row gap-8 ">
-                    <div className="flex-1">
-                      <img
-                        src={`${domain}wp-content/uploads/2025/11/eventos-1.png`}
-                        alt=""
-                        className="h-60 mx-auto"
-                      />
-                    </div>
-                    <div className="flex-1 pr-16">
-                      <span className="bg-yellowgreen font-verdana-bold text-white px-4 py-1 rounded-lg text-lg">
-                        Eventos
-                      </span>
-                      <h3 className="font-verdana-bold text-gunmetal text-xl pt-4 pb-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                      </h3>
-                      <p className="font-verdana-regular text-gunmetal">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nunc et risus dapibus
-                        semper a sed eros. Sed sed viverra lorem. Sed posuere erat ac mi dapibus, eget commodo metus
-                        faucibus.
-                      </p>
-                      <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
-                        <a
-                          href="#"
-                          className="font-verdana-regular text-gunmetal">
-                          Leer más
-                        </a>
-                        <img
-                          src={`${domain}wp-content/uploads/2025/10/chevron-right.png`}
-                          alt=""
-                          className="h-3"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative">
-                  <div className="flex items-center flex-col md:flex-row gap-8 ">
-                    <div className="flex-1">
-                      <img
-                        src={`${domain}wp-content/uploads/2025/11/eventos-1.png`}
-                        alt=""
-                        className="h-60 mx-auto"
-                      />
-                    </div>
-                    <div className="flex-1 pr-16">
-                      <span className="bg-yellowgreen font-verdana-bold text-white px-4 py-1 rounded-lg text-lg">
-                        Eventos
-                      </span>
-                      <h3 className="font-verdana-bold text-gunmetal text-xl pt-4 pb-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                      </h3>
-                      <p className="font-verdana-regular text-gunmetal">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nunc et risus dapibus
-                        semper a sed eros. Sed sed viverra lorem. Sed posuere erat ac mi dapibus, eget commodo metus
-                        faucibus.
-                      </p>
-                      <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
-                        <a
-                          href="#"
-                          className="font-verdana-regular text-gunmetal">
-                          Leer más
-                        </a>
-                        <img
-                          src={`${domain}wp-content/uploads/2025/10/chevron-right.png`}
-                          alt=""
-                          className="h-3"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="">
-                <div className="relative">
-                  <div className="flex items-center flex-col md:flex-row gap-8 ">
-                    <div className="flex-1">
-                      <img
-                        src={`${domain}wp-content/uploads/2025/11/eventos-1.png`}
-                        alt=""
-                        className="h-60 mx-auto"
-                      />
-                    </div>
-                    <div className="flex-1 pr-16">
-                      <span className="bg-yellowgreen font-verdana-bold text-white px-4 py-1 rounded-lg text-lg">
-                        Eventos
-                      </span>
-                      <h3 className="font-verdana-bold text-gunmetal text-xl pt-4 pb-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                      </h3>
-                      <p className="font-verdana-regular text-gunmetal">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet nunc et risus dapibus
-                        semper a sed eros. Sed sed viverra lorem. Sed posuere erat ac mi dapibus, eget commodo metus
-                        faucibus.
-                      </p>
-                      <div className="flex items-center border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
-                        <a
-                          href="#"
+                          href="/post/como-elegir-la-agencia-de-eventos-corporativos-perfecta"
                           className="font-verdana-regular text-gunmetal">
                           Leer más
                         </a>

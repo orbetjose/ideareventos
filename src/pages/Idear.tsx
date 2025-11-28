@@ -47,7 +47,7 @@ export default function Idear() {
                 <p className="text-lg font-verdana-regular">y organizamos algo bonito de fin de año.</p>
                 <div className="flex items-center mx-auto border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
                   <a
-                    href="#"
+                    href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes"
                     className="font-verdana-regular text-gunmetal">
                     Contáctanos
                   </a>
@@ -74,7 +74,7 @@ export default function Idear() {
                 </p>
                 <div className="flex items-center mx-auto border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
                   <a
-                    href="#"
+                    href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes"
                     className="font-verdana-regular text-gunmetal">
                     Contáctanos
                   </a>
@@ -101,7 +101,7 @@ export default function Idear() {
                 <p className="text-lg font-verdana-regular">a proveedoras mujeres en cada región.</p>
                 <div className="flex items-center mx-auto border rounded-4xl px-5 py-1 w-fit mt-4 gap-2">
                   <a
-                    href="#"
+                    href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes"
                     className="font-verdana-regular text-gunmetal">
                     Contáctanos
                   </a>

@@ -3,9 +3,10 @@ type heroBannerProps = {
   title: string;
   text?: string;
   imagen: string;
+  button?: string;
 };
 
-export default function HeroBanner({ title, imagen, text }: heroBannerProps) {
+export default function HeroBanner({ title, imagen, text, button }: heroBannerProps) {
 
   return (
     <section className="pb-14">
@@ -20,6 +21,9 @@ export default function HeroBanner({ title, imagen, text }: heroBannerProps) {
             {title}
           </h2>
           <p className="font-verdana-bold italic text-white text-lg text-center pt-8">{text}</p>
+          {button && (
+            <a className="bg-yellowgreen px-5 py-1 rounded-2xl font-verdana-bold text-white block w-fit hover:scale-105 transition-transform mx-auto text-xl mt-6" href="https://api.whatsapp.com/send?phone=529992659866&text=Hola+Idear+estoy+interesado+en+organizar+mi+pr%C3%B3ximo+evento+con+ustedes" target="_blank">{button}</a>
+          )}
         </div>
       </div>
     </section>
